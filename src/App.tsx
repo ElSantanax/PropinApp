@@ -10,7 +10,7 @@ function App() {
 
       <main className=" max-w-7xl mx-auto py-20 grid md:grid-cols-2">
         <div>
-          <h2 className="mb-5 font-black ">Menú</h2>
+          <h2 className=" mb-8 font-black text-2xl">Menú</h2>
           <div className=" space-y-3">
             {menuItems.map(item => (
               <MenuItems
@@ -21,7 +21,7 @@ function App() {
           </div>
         </div>
 
-        <div className="mb-5 font-black ">
+        <div className="mb-5 font-black text-2xl">
           <h2>Consumo</h2>
         </div>
       </main>
