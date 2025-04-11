@@ -1,7 +1,11 @@
 import MenuItems from "./components/MenuItems"
 import { menuItems } from "./data/db"
+import useOrder from "./hooks/useOrder"
 
 function App() {
+
+  const { addItem } = useOrder(); // Invocar el hook correctamente
+
   return (
     <>
       <header className=" bg-teal-400 py-5">
@@ -16,6 +20,7 @@ function App() {
               <MenuItems
                 key={item.id}
                 item={item}
+                addItem={addItem}
               />
             ))}
           </div>
