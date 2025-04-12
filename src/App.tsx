@@ -5,18 +5,18 @@ import useOrder from "./hooks/useOrder"
 
 function App() {
 
-  const { order, addItem } = useOrder(); // Invocar el hook correctamente
+  const { order, addItem, removeItem } = useOrder(); // Invocar el hook correctamente
 
   return (
     <>
-      <header className=" bg-teal-400 py-5">
-        <h1 className=" text-center text-4xl font-black text-white"> Calculadora de propina y consumos</h1>
+      <header className="bg-teal-400 py-5">
+        <h1 className="text-center text-4xl font-black text-white"> Calculadora de propina y consumos</h1>
       </header>
 
-      <main className=" max-w-7xl mx-auto py-20 grid md:grid-cols-2 gap-7">
+      <main className="max-w-7xl mx-auto py-20 grid md:grid-cols-2 gap-7">
         <div>
-          <h2 className=" mb-8 font-black text-2xl">Menú</h2>
-          <div className=" space-y-3">
+          <h2 className="mb-8 font-black text-2xl">Menú</h2>
+          <div className="space-y-3">
             {menuItems.map(item => (
               <MenuItems
                 key={item.id}
@@ -30,6 +30,7 @@ function App() {
         <div className=" border border-dashed border-slate-300 p-5 rounded-lg space-y-10">
           <OrderContent
             order={order}
+            removeItem={removeItem}
           />
 
         </div>
