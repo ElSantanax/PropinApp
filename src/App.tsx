@@ -13,7 +13,7 @@ function App() {
         <h1 className=" text-center text-4xl font-black text-white"> Calculadora de propina y consumos</h1>
       </header>
 
-      <main className=" max-w-7xl mx-auto py-20 grid md:grid-cols-2">
+      <main className=" max-w-7xl mx-auto py-20 grid md:grid-cols-2 gap-7">
         <div>
           <h2 className=" mb-8 font-black text-2xl">Menú</h2>
           <div className=" space-y-3">
@@ -27,7 +27,7 @@ function App() {
           </div>
         </div>
 
-        <div className=" border border-dashed border-slate-300 rounded-lg space-y-10">
+        <div className=" border border-dashed border-slate-300 p-5 rounded-lg space-y-10">
           <OrderContent
             order={order}
           />

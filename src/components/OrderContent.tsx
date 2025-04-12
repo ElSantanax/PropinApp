@@ -8,7 +8,7 @@ export default function OrderContent({ order }: OrderContentPromps) {
         <div>
             <h2 className="font-black text-2xl mb-8"> Consumo</h2>
 
-            <div className="space-x-3 mt-5">
+            <div className=" space-y-3 mt-5">
                 {order.length === 0 ?
                     <p className="text-center">La orden esta vacia</p>
                     :
