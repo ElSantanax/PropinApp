@@ -15,7 +15,7 @@ function App() {
       </header>
 
       <main className="max-w-7xl mx-auto py-20 grid md:grid-cols-2 gap-7">
-        <div>
+        <div className="p-5">
           <h2 className="mb-8 font-black text-2xl">Menú</h2>
           <div className="space-y-3">
             {menuItems.map(item => (
@@ -28,16 +28,20 @@ function App() {
           </div>
         </div>
 
-        <div className=" border border-dashed border-slate-300 p-5 rounded-lg space-y-10">
-          <OrderContent
-            order={order}
-            removeItem={removeItem}
-          />
+        <div className="border border-dashed border-teal-400 p-5 rounded-lg space-y-10">
+          <div>
+            <OrderContent
+              order={order}
+              removeItem={removeItem}
+            />
 
-          <OrdenTotals
+            <OrdenTotals
+              order={order}
+            />
+          </div>
 
-          />
         </div>
+
       </main>
 
     </>
