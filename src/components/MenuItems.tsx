@@ -1,11 +1,11 @@
 import { MenuItem } from "../types"
 
-type MenuItemsPromps = {
+type MenuItemsProps = {
     item: MenuItem,
     addItem: (item: MenuItem) => void
 }
 
-export default function MenuItems({ item, addItem }: MenuItemsPromps) {
+export default function MenuItems({ item, addItem }: MenuItemsProps) {
     return (
         <button
             className="border border-teal-400 hover:bg-teal-400 hover:text-white rounded-lg w-full p-3 flex justify-between"

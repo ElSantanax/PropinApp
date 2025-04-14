@@ -1,11 +1,11 @@
 import { MenuItem, OrderItem } from "../types"
 import { formatCurrency } from "../helpers"
 
-type OrderContentPromps = {
+type OrderContentProps = {
     order: OrderItem[],
     removeItem: (id: MenuItem['id']) => void
 }
-export default function OrderContent({ order, removeItem }: OrderContentPromps) {
+export default function OrderContent({ order, removeItem }: OrderContentProps) {
     return (
         <div>
             <h2 className="font-black text-2xl mb-8">Consumo</h2>
