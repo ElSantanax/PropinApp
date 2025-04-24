@@ -23,35 +23,45 @@ export const orderReducer = (
 
     if (action.type === 'add-item') {
         // Logíca
+        const itemExist = state.order.find(orderItem => orderItem.id === action.payload.item.id)
 
-        return {
-            ...state
+        let updateOrder: OrderItem[] = []
+
+        if (itemExist) {
+            updateOrder = state.order.map(orderItem => orderItem.id === action.payload.item.id ? { ...orderItem, quantity: orderItem.quantity + 1 } : orderItem)
+        } else {
+            const newItem = { ...action.payload.item, quantity: 1 }
+            updateOrder = [...state.order, newItem]
+            return {
+                ...state,
+                updateOrder
+            }
         }
-    }
 
-    if (action.type === 'remove-item') {
-        // Logíca
+        if (action.type === 'remove-item') {
+            // Logíca
 
-        return {
-            ...state
+            return {
+                ...state
+            }
         }
-    }
 
-    if (action.type === 'place-older') {
-        // Logíca
+        if (action.type === 'place-older') {
+            // Logíca
 
-        return {
-            ...state
+            return {
+                ...state
+            }
         }
-    }
 
-    if (action.type === 'set-tip') {
-        // Logíca
+        if (action.type === 'set-tip') {
+            // Logíca
 
-        return {
-            ...state
+            return {
+                ...state
+            }
         }
-    }
 
-    return state
+        return state
+    }
 }
