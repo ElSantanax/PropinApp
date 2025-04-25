@@ -1,3 +1,4 @@
+import { act } from "react";
 import { MenuItem, OrderItem } from "../types";
 
 export type OrderActions =
@@ -37,31 +38,31 @@ export const orderReducer = (
                 order
             }
         }
+    }
 
-        if (action.type === 'remove-item') {
-            // Logíca
-
-            return {
-                ...state
-            }
+    if (action.type === 'remove-item') {
+        // Logíca
+        const order = state.order.filter(item => item.id !== action.payload.id)
+        return {
+            ...state,
+            order
         }
+    }
 
-        if (action.type === 'place-order') {
-            // Logíca
+    if (action.type === 'place-order') {
+        // Logíca
 
-            return {
-                ...state
-            }
+        return {
+            ...state
         }
+    }
 
-        if (action.type === 'add-tip') {
-            // Logíca
+    if (action.type === 'add-tip') {
+        // Logíca
 
-            return {
-                ...state
-            }
+        return {
+            ...state
         }
-
     }
     return state
 }
