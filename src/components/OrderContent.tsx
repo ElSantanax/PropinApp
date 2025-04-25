@@ -24,7 +24,7 @@ export default function OrderContent({ order, dispatch }: OrderContentProps) {
                         </div>
                         <button
                             className="bg-teal-400 font-black h-8 w-8 rounded-full text-white"
-                            onClick={() => dispatch({ type: 'remove-item', payload: item })}
+                            onClick={() => dispatch({ type: 'remove-item', payload: { id: item.id } })}
                         >
                             X
                         </button>

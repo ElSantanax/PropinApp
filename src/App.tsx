@@ -1,15 +1,13 @@
-import MenuItems from "./components/MenuItems"
+import MenuItems from "./components/MenuItems";
 import OrderContent from "./components/OrderContent";
 import OrdenTotals from "./components/OrdenTotals";
 import TipPercentageForm from "./components/TipPercentageForm";
-import { menuItems } from "./data/db"
-import useOrder from "./hooks/useOrder"
+import { menuItems } from "./data/db";
 import { useReducer } from "react";
 import { initialState, orderReducer } from "./reducers/order-reducers";
 
 function App() {
 
-  const { order, tip, setTip, placeOrder } = useOrder(); // Invocar el hook correctamente
   const [state, dispatch] = useReducer(orderReducer, initialState)
 
   return (
@@ -44,14 +42,14 @@ function App() {
                 />
 
                 <TipPercentageForm
-                  setTip={setTip}
-                  tip={tip}
+                  dispatch={dispatch}
+                  tip={state.tip}
                 />
 
                 <OrdenTotals
                   order={state.order}
-                  tip={tip}
-                  placeOrder={placeOrder}
+                  tip={state.tip}
+                  dispatch={dispatch}
                 />
               </div>
             </>

@@ -1,4 +1,3 @@
-import { act } from "react";
 import { MenuItem, OrderItem } from "../types";
 
 export type OrderActions =
@@ -23,25 +22,27 @@ export const orderReducer = (
 ) => {
 
     if (action.type === 'add-item') {
-        // Logíca
-        const itemExist = state.order.find(orderItem => orderItem.id === action.payload.item.id)
+        const itemExist = state.order.find(orderItem => orderItem.id === action.payload.item.id);
 
-        let order: OrderItem[] = []
+        let order: OrderItem[] = [];
 
         if (itemExist) {
-            order = state.order.map(orderItem => orderItem.id === action.payload.item.id ? { ...orderItem, quantity: orderItem.quantity + 1 } : orderItem)
+            order = state.order.map(orderItem =>
+                orderItem.id === action.payload.item.id
+                    ? { ...orderItem, quantity: orderItem.quantity + 1 }
+                    : orderItem
+            );
         } else {
-            const newItem: OrderItem = { ...action.payload.item, quantity: 1 }
-            order = [...state.order, newItem]
-            return {
-                ...state,
-                order
-            }
+            const newItem: OrderItem = { ...action.payload.item, quantity: 1 };
+            order = [...state.order, newItem];
         }
+        return {
+            ...state,
+            order
+        };
     }
 
     if (action.type === 'remove-item') {
-        // Logíca
         const order = state.order.filter(item => item.id !== action.payload.id)
         return {
             ...state,
@@ -50,18 +51,18 @@ export const orderReducer = (
     }
 
     if (action.type === 'place-order') {
-        // Logíca
-
         return {
-            ...state
+            ...state,
+            order: [],
+            tip: 0
         }
     }
 
     if (action.type === 'add-tip') {
-        // Logíca
-
+        const tip = action.payload.value
         return {
-            ...state
+            ...state,
+            tip
         }
     }
     return state
