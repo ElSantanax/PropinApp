@@ -9,7 +9,7 @@ import { initialState, orderReducer } from "./reducers/order-reducers";
 
 function App() {
 
-  const { order, removeItem, tip, setTip, placeOrder } = useOrder(); // Invocar el hook correctamente
+  const { order, addItem, removeItem, tip, setTip, placeOrder } = useOrder(); // Invocar el hook correctamente
   const [state, dispatch] = useReducer(orderReducer, initialState)
 
   return (
@@ -35,11 +35,11 @@ function App() {
 
         <div className="border border-dashed border-teal-400 bg-white p-5 rounded-lg space-y-10">
 
-          {order.length > 0 ? (
+          {state.order.length > 0 ? (
             <>
               <div>
                 <OrderContent
-                  order={order}
+                  order={state.order}
                   removeItem={removeItem}
                 />
 
@@ -60,7 +60,6 @@ function App() {
           )}
         </div>
       </main>
-
     </>
   )
 }

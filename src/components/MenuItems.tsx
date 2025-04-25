@@ -3,7 +3,7 @@ import { OrderActions } from "../reducers/order-reducers"
 
 type MenuItemsProps = {
     item: MenuItem,
-    dispatch: React.ActionDispatch<[action: OrderActions]>
+    dispatch: React.Dispatch<OrderActions>
 }
 
 export default function MenuItems({ item, dispatch }: MenuItemsProps) {

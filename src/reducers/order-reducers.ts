@@ -3,17 +3,17 @@ import { MenuItem, OrderItem } from "../types";
 export type OrderActions =
     { type: 'add-item', payload: { item: MenuItem } } |
     { type: 'remove-item', payload: { id: MenuItem["id"] } } |
-    { type: 'place-older' } |
-    { type: 'set-tip', payload: { value: number } }
+    { type: 'place-order' } |
+    { type: 'add-tip', payload: { value: number } }
 
 export type OrderState = {
-    order: OrderItem[]
+    order: OrderItem[],
     tip: number
 }
 
 export const initialState: OrderState = {
     order: [],
-    tip: 0,
+    tip: 0
 }
 
 export const orderReducer = (
@@ -25,16 +25,16 @@ export const orderReducer = (
         // Logíca
         const itemExist = state.order.find(orderItem => orderItem.id === action.payload.item.id)
 
-        let updateOrder: OrderItem[] = []
+        let order: OrderItem[] = []
 
         if (itemExist) {
-            updateOrder = state.order.map(orderItem => orderItem.id === action.payload.item.id ? { ...orderItem, quantity: orderItem.quantity + 1 } : orderItem)
+            order = state.order.map(orderItem => orderItem.id === action.payload.item.id ? { ...orderItem, quantity: orderItem.quantity + 1 } : orderItem)
         } else {
-            const newItem = { ...action.payload.item, quantity: 1 }
-            updateOrder = [...state.order, newItem]
+            const newItem: OrderItem = { ...action.payload.item, quantity: 1 }
+            order = [...state.order, newItem]
             return {
                 ...state,
-                updateOrder
+                order
             }
         }
 
@@ -46,7 +46,7 @@ export const orderReducer = (
             }
         }
 
-        if (action.type === 'place-older') {
+        if (action.type === 'place-order') {
             // Logíca
 
             return {
@@ -54,7 +54,7 @@ export const orderReducer = (
             }
         }
 
-        if (action.type === 'set-tip') {
+        if (action.type === 'add-tip') {
             // Logíca
 
             return {
@@ -62,6 +62,6 @@ export const orderReducer = (
             }
         }
 
-        return state
     }
+    return state
 }
